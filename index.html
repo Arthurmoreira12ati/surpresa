@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Dia dos Namorados Minha Princesa</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: "Arial", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      overflow-y: auto; /* Corrigindo o problema de rolagem */
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    .message {
+      text-align: center;
+      max-width: 800px;
+      line-height: 1.6;
+      padding: 10px;
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    .music-container {
+      text-align: center;
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid #00bfff;
+      border-radius: 10px;
+      background-color: #1e1e1e;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.5);
+    }
+
+    audio {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .container {
+      border: 2px solid #00bfff;
+      border-radius: 10px;
+      padding: 10px;
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1e1e1e;
+      flex-wrap: wrap;
+    }
+
+    .container img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+      display: none;
+      transition: opacity 0.7s ease-in-out;
+    }
+
+    /* Corações caindo */
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      top: -50px;
+      color: red;
+      font-size: 30px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { top: -50px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Feliz Dia dos Namorados, minha princesa ❤️</h1>
+
+    <br>
+
+  <img src="fotos/img19.jpg" alt="Imagem especial">
+
+  <br>
+
+  <h2>Te amo há</h2>
+
+  <br>
+
+  <h3><div class="timer" id="tempo"></div></h3>
+
+  <br>
+
+  <hr style="width: 90%; border-color: #00bfff;">
+
+  <div class="message">
+    Oiiie minha namorada, tudo bem? Você me conhece e sabe que eu não sou muito bom com as palavras, mas eu sempre tento dar o meu melhor para te deixar feliz. Você chegou do nada na minha vida e se tornou a pessoa mais importante que eu tenho. Então saiba que eu TE AMO MUITO! Feliz Dia dos Namorados, minha princesa...
+  </div>
+
+  <!-- Player de música estilizado -->
+  <div class="music-container">
+    <h2>Nossa música 💙</h2>
+    <audio controls>
+      <source src="./DVD PRAZER, EU SOU FERRUGEM： ＂MINHA NAMORADA＂.mp3" type="audio/mp3">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+  </div>
+
+  <br>
+
+  <h2>Alguns Momentos nossos</h2>
+  <div class="container">
+    <img src="fotos/img1.jpg" alt="Foto 1">
+    <img src="fotos/img2.jpg" alt="Foto 2">
+    <img src="fotos/img3.jpg" alt="Foto 3">
+    <img src="fotos/img4.jpg" alt="Foto 4">
+    <img src="fotos/img5.jpg" alt="Foto 5">
+    <img src="fotos/imgp.jpg" alt="Foto 5">
+    <img src="fotos/img6.jpg" alt="Foto 6">
+    <img src="fotos/img7.jpg" alt="Foto 7">
+    <img src="fotos/img8.jpg" alt="Foto 8">
+    <img src="fotos/img9.jpg" alt="Foto 9">
+    <img src="fotos/img10.jpg" alt="Foto 10">
+    <img src="fotos/img11.jpg" alt="Foto 11">
+    <img src="fotos/img12.jpg" alt="Foto 12">
+    <img src="fotos/img13.jpg" alt="Foto 13">
+    <img src="fotos/img14.jpg" alt="Foto 14">
+    <img src="fotos/img15.jpg" alt="Foto 15">
+    <img src="fotos/img16.jpg" alt="Foto 16">
+    <img src="fotos/img17.jpg" alt="Foto 17">
+    <img src="fotos/img18.jpg" alt="Foto 18">
+    <img src="fotos/img19.jpg" alt="Foto 19">
+    <img src="fotos/img21.jpg" alt="Foto 20">
+    <img src="fotos/img22.jpg" alt="Foto 21">
+    <img src="fotos/imgF.jpg" alt="Foto 21">
+  </div>
+
+  <p style="text-align: center; font-weight: bold; font-size: 18px;">
+    Amor, todos os momentos que passamos juntos, eu voltaria em todos sem exceção só para viver mais tempo com você. EU TE AMO! Continue sendo essa mulher incrível que você é comigo! ❤️
+  </p>
+
+  <!-- Corações caindo -->
+  <div class="hearts-container"></div>
+
+  <script>
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = Math.random() * 3 + 2 + "s"; 
+      document.querySelector(".hearts-container").appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(criarCoracao, 500);
+  </script>
+
+  <script>
+    const inicioRelacionamento = new Date("2025-02-23T14:00:00");
+    const tempoEl = document.getElementById("tempo");
+
+    function atualizarTempo() {
+      const agora = new Date();
+      const diff = agora - inicioRelacionamento;
+
+      const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+      const dias = Math.floor((diff / (1000 * 60 * 60 * 24)) % 30.44);
+      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diff / (1000 * 60)) % 60);
+      const segundos = Math.floor((diff / 1000) % 60);
+
+      tempoEl.textContent = `${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+    }
+
+    setInterval(atualizarTempo, 1000);
+    atualizarTempo();
+
+    const imagens = document.querySelectorAll(".container img");
+    let indiceAtual = 0;
+
+    function mostrarImagemAtual() {
+      imagens.forEach(img => img.style.display = "none");
+      imagens[indiceAtual].style.display = "block";
+      imagens[indiceAtual].style.opacity = "1";
+    }
+
+    function proximaImagem() {
+      imagens[indiceAtual].style.opacity = "0";
+      indiceAtual = (indiceAtual + 1) % imagens.length;
+      mostrarImagemAtual();
+    }
+
+    mostrarImagemAtual();
+    setInterval(proximaImagem, 3000);
+  </script>
+</body>
+</html>
