@@ -1,283 +1,408 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz Dia dos Namorados Minha Princesa</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Página especial para o Dia dos Namorados com fotos, música e mensagens para minha princesa." />
+<title>Feliz Dia dos Namorados, Minha Princesa</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-      background-color: #121212;
-      color: #ffffff;
-      font-family: "Arial", sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 20px;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
+  /* Fonte e base */
+  body {
+    background: linear-gradient(135deg, #121212 0%, #1b1b2f 100%);
+    color: #f0e6f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 15px;
+    min-height: 100vh;
+  }
 
-    h1, h2 {
-      text-align: center;
-    }
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 0.5em;
+    color: #FF69B4;
+    text-shadow: 1px 1px 6px rgba(255, 105, 180, 0.7);
+  }
 
-    .message {
-      text-align: center;
-      max-width: 800px;
-      line-height: 1.6;
-      padding: 10px;
-      font-size: 18px;
-      font-style: italic;
-    }
+  h1 {
+    font-size: 2.8rem;
+    margin-top: 10px;
+  }
 
-    .music-container {
-      text-align: center;
-      margin-top: 20px;
-      padding: 15px;
-      border: 2px solid #00bfff;
-      border-radius: 10px;
-      background-color: #1e1e1e;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.5);
-    }
+  h2 {
+    font-size: 1.8rem;
+  }
 
-    audio {
-      width: 100%;
-      border-radius: 10px;
-    }
+  /* Imagem principal */
+  .main-image {
+    max-width: 420px;
+    width: 90vw;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+    margin: 20px 0 35px;
+    transition: transform 0.5s ease;
+  }
+  .main-image:hover {
+    transform: scale(1.05);
+  }
 
-    .carousel-wrapper {
-      position: relative;
-      width: 90%;
-      max-width: 800px;
-      margin: 20px auto;
-    }
+  /* Contêiner música */
+  .music-container {
+    background-color: rgba(255, 105, 180, 0.1);
+    border: 2px solid #FF69B4;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90vw;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+    margin-bottom: 40px;
+  }
 
+  audio {
+    width: 100%;
+    border-radius: 15px;
+    outline: none;
+  }
+
+  /* Link para download da música */
+  .music-download {
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+    color: #ff69b4;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .music-download:hover {
+    color: #e754a1;
+  }
+
+  /* Timer */
+  .timer {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #FF69B4;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1.1px;
+    user-select: none;
+  }
+
+  hr {
+    width: 90vw;
+    max-width: 800px;
+    border: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FF69B4, transparent);
+    margin: 40px 0;
+  }
+
+  /* Mensagem */
+  .message {
+    max-width: 800px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    font-style: italic;
+    padding: 0 10px;
+    color: #f8e4f2;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+    margin-bottom: 50px;
+  }
+
+  /* Carrossel */
+  .carousel-wrapper {
+    width: 90vw;
+    max-width: 800px;
+    position: relative;
+    margin-bottom: 40px;
+  }
+
+  .container {
+    background-color: rgba(255, 105, 180, 0.07);
+    border: 2px solid #FF69B4;
+    border-radius: 20px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+  }
+
+  .container img {
+    max-width: 400px;
+    width: 90%;
+    height: auto;
+    border-radius: 20px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .container img.active {
+    opacity: 1;
+    position: relative;
+  }
+
+  /* Botões do carrossel */
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #FF69B4;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+
+  .carousel-button:hover {
+    background-color: #e754a1;
+  }
+
+  .carousel-button:focus {
+    outline: 3px solid #ff69b4;
+    outline-offset: 3px;
+  }
+
+  .carousel-button.prev {
+    left: -30px;
+  }
+
+  .carousel-button.next {
+    right: -30px;
+  }
+
+  /* Texto final */
+  p.final-message {
+    max-width: 700px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    color: #ff85c1;
+    margin-bottom: 60px;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+  }
+
+  /* Título especial */
+  .special-title {
+    font-size: 3rem;
+    color: #ff1493;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4;
+    animation: pulse 2s infinite alternate;
+  }
+
+  @keyframes pulse {
+    0% {
+      text-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4;
+    }
+    100% {
+      text-shadow: 0 0 30px #ff1493, 0 0 60px #ff69b4;
+    }
+  }
+
+  /* Corações animados */
+  .hearts-container {
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    z-index: 9999;
+  }
+
+  .heart {
+    position: absolute;
+    top: -40px;
+    font-size: 28px;
+    animation: fall linear forwards;
+    user-select: none;
+    filter: drop-shadow(0 0 4px #ff69b4);
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  /* Responsividade */
+  @media (max-width: 480px) {
     .container {
-      border: 2px solid #00bfff;
-      border-radius: 10px;
-      padding: 10px;
-      background-color: #1e1e1e;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 500px;
-      overflow: hidden;
-      position: relative;
+      height: 320px;
     }
-
-    .container img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: 10px;
-      display: none;
-      transition: opacity 0.7s ease-in-out;
+    h1 {
+      font-size: 2rem;
     }
-
-    .carousel-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 191, 255, 0.8);
-      border: none;
-      color: white;
-      font-size: 32px;
-      border-radius: 50%;
-      padding: 10px 16px;
-      cursor: pointer;
-      box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.5);
-      transition: background-color 0.3s;
-      z-index: 10;
+    h2 {
+      font-size: 1.4rem;
     }
-
-    .carousel-button:hover {
-      background-color: rgba(0, 153, 204, 0.9);
+    .message {
+      font-size: 1rem;
+      max-width: 95vw;
     }
-
-    .carousel-button.prev {
-      left: -20px;
+    p.final-message {
+      font-size: 1rem;
+      max-width: 90vw;
     }
-
-    .carousel-button.next {
-      right: -20px;
-    }
-
-    .hearts-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .heart {
-      position: absolute;
-      top: -50px;
-      color: red;
-      font-size: 30px;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% { top: -50px; opacity: 1; }
-      100% { top: 100vh; opacity: 0; }
-    }
-
-    .main-image {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: 10px;
-      display: block;
-      margin: 20px auto;
-    }
-
-    .special-title {
-      font-size: 28px;
-      color: #FF010;
-      text-align: center;
-      font-weight: bold;
-      text-shadow: 2px 2px 5px rgba(255, 64, 129, 0.5);
-      animation: pulse 1.5s infinite;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <h1>Feliz Dia dos Namorados, minha princesa ❤️</h1>
 
-  <img class="main-image" src="fotos/img19.jpg" alt="Imagem especial">
+<h1>Feliz Dia dos Namorados, minha princesa ❤️</h1>
 
-  <div class="music-container">
-    <h2>Nossa música 💙</h2>
-    <br>
-    <audio controls>
-      <source src="./DVD PRAZER, EU SOU FERRUGEM： ＂MINHA NAMORADA＂.mp3" type="audio/mp3">
-      Seu navegador não suporta o elemento de áudio.
-    </audio>
+<img class="main-image" src="fotos/img19.jpg" alt="Nossa foto especial juntos" loading="lazy" />
+
+<div class="music-container">
+  <h2>Nossa música 💙</h2>
+  <audio controls preload="auto" loop>
+    <source src="./DVD PRAZER, EU SOU FERRUGEM： ＂MINHA NAMORADA＂.mp3" type="audio/mp3" />
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
+  <a class="music-download" href="https://open.spotify.com/playlist/0muvv3LQ1eXfwf6aifr1Ft?si=8d43a4024e584945" download>
+    Mor clica aqui pra entrar na nossa playlist
+  </a>
+</div>
+
+<h2>Te amo há</h2>
+<div class="timer" id="tempo"></div>
+
+<hr />
+
+<div class="message">
+  Oiiie minha namorada, tudo bem? Você me conhece e sabe que eu não sou muito bom com as palavras, mas eu sempre tento dar o meu melhor para te deixar feliz. Você chegou do nada na minha vida e se tornou a pessoa mais importante que eu tenho. Então saiba que eu TE AMO MUITO! Feliz Dia dos Namorados, minha princesa...
+</div>
+
+<div class="carousel-wrapper" tabindex="0" aria-label="Carrossel de fotos">
+  <button class="carousel-button prev" aria-label="Imagem anterior" onclick="imagemAnterior()">❮</button>
+  <div class="container" onmouseenter="pauseCarrossel()" onmouseleave="retomarCarrossel()">
+    <!-- imagens do carrossel -->
+    <img src="fotos/img1.jpg" alt="Foto nossa no parque" loading="lazy" />
+    <img src="fotos/img2.jpg" alt="Foto nossa sorrindo" loading="lazy" />
+    <img src="fotos/img3.jpg" alt="Foto viagem juntos" loading="lazy" />
+    <img src="fotos/img4.jpg" alt="Foto especial" loading="lazy" />
+    <img src="fotos/img5.jpg" alt="Foto divertida" loading="lazy" />
+    <img src="fotos/imgp.jpg" alt="Foto próxima" loading="lazy" />
+    <img src="fotos/img6.jpg" alt="Foto bonita" loading="lazy" />
+    <img src="fotos/img7.jpg" alt="Foto amor" loading="lazy" />
+    <img src="fotos/img8.jpg" alt="Foto romântica" loading="lazy" />
+    <img src="fotos/img9.jpg" alt="Foto alegre" loading="lazy" />
+    <img src="fotos/img10.jpg" alt="Foto especial 2" loading="lazy" />
+    <img src="fotos/img11.jpg" alt="Foto sorridente" loading="lazy" />
+    <img src="fotos/img12.jpg" alt="Foto passeio" loading="lazy" />
+    <img src="fotos/img13.jpg" alt="Foto carinhosa" loading="lazy" />
+    <img src="fotos/img14.jpg" alt="Foto feliz" loading="lazy" />
+    <img src="fotos/img15.jpg" alt="Foto nossa amizade" loading="lazy" />
+    <img src="fotos/img16.jpg" alt="Foto beijo" loading="lazy" />
+    <img src="fotos/img17.jpg" alt="Foto momento especial" loading="lazy" />
+    <img src="fotos/img18.jpg" alt="Foto abraço" loading="lazy" />
+    <img src="fotos/img19.jpg" alt="Foto especial" loading="lazy" />
+    <img src="fotos/img21.jpg" alt="Foto linda" loading="lazy" />
+    <img src="fotos/imgF.jpg" alt="Foto final" loading="lazy" />
+    <img src="fotos/img23.jpg" alt="Foto feliz" loading="lazy" />
+    <img src="fotos/img24.jpg" alt="Foto romântica" loading="lazy" />
+    <img src="fotos/img22.jpg" alt="Foto última" loading="lazy" />
   </div>
+  <button class="carousel-button next" aria-label="Próxima imagem" onclick="proximaImagem()">❯</button>
+</div>
 
-  <br>
+<p class="final-message">
+  Amor, todos os momentos que passamos juntos, eu voltaria em todos sem exceção só para viver mais tempo com você. EU TE AMO! Continue sendo essa mulher incrível que você é comigo! ❤️
+</p>
 
-  <h2>Te amo há</h2>
-  <br>
-  <div class="timer" id="tempo"></div>
+<h1 class="special-title">Te amo!</h1>
 
-  <br>
+<div class="hearts-container"></div>
 
-  <hr style="width: 90%; border-color: #00bfff;">
-  <br>
+<script>
+  // Criação dos corações animados
+  function criarCoracao() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.textContent = "❤️";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    document.querySelector(".hearts-container").appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }
+  setInterval(criarCoracao, 400);
 
-  <div class="message">
-    Oiiie minha namorada, tudo bem? Você me conhece e sabe que eu não sou muito bom com as palavras, mas eu sempre tento dar o meu melhor para te deixar feliz. Você chegou do nada na minha vida e se tornou a pessoa mais importante que eu tenho. Então saiba que eu TE AMO MUITO! Feliz Dia dos Namorados, minha princesa...
-  </div>
+  // Temporizador do relacionamento
+  const inicioRelacionamento = new Date("2025-02-23T14:00:00");
+  const tempoEl = document.getElementById("tempo");
 
-  <h2>Alguns Momentos nossos</h2>
+  function atualizarTempo() {
+    const agora = new Date();
+    const diff = agora - inicioRelacionamento;
 
-  <div class="carousel-wrapper">
-    <button class="carousel-button prev" onclick="imagemAnterior()">❮</button>
-    <div class="container">
-      <img src="fotos/img1.jpg" alt="Foto 1">
-      <img src="fotos/img2.jpg" alt="Foto 2">
-      <img src="fotos/img3.jpg" alt="Foto 3">
-      <img src="fotos/img4.jpg" alt="Foto 4">
-      <img src="fotos/img5.jpg" alt="Foto 5">
-      <img src="fotos/imgp.jpg" alt="Foto 6">
-      <img src="fotos/img6.jpg" alt="Foto 7">
-      <img src="fotos/img7.jpg" alt="Foto 8">
-      <img src="fotos/img8.jpg" alt="Foto 9">
-      <img src="fotos/img9.jpg" alt="Foto 10">
-      <img src="fotos/img10.jpg" alt="Foto 11">
-      <img src="fotos/img11.jpg" alt="Foto 12">
-      <img src="fotos/img12.jpg" alt="Foto 13">
-      <img src="fotos/img13.jpg" alt="Foto 14">
-      <img src="fotos/img14.jpg" alt="Foto 15">
-      <img src="fotos/img15.jpg" alt="Foto 16">
-      <img src="fotos/img16.jpg" alt="Foto 17">
-      <img src="fotos/img17.jpg" alt="Foto 18">
-      <img src="fotos/img18.jpg" alt="Foto 19">
-      <img src="fotos/img19.jpg" alt="Foto 20">
-      <img src="fotos/img21.jpg" alt="Foto 21">
-      <img src="fotos/imgF.jpg" alt="Foto 22">
-      <img src="fotos/img23.jpg" alt="Foto 23">
-      <img src="fotos/img24.jpg" alt="Foto 24">
-      <img src="fotos/img22.jpg" alt="Foto 25">
-    </div>
-    <button class="carousel-button next" onclick="proximaImagem()">❯</button>
-  </div>
+    const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+    const dias = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diff % (1000 * 60)) / 1000);
 
-  <p style="text-align: center; font-weight: bold; font-size: 18px;">
-    Amor, todos os momentos que passamos juntos, eu voltaria em todos sem exceção só para viver mais tempo com você. EU TE AMO! Continue sendo essa mulher incrível que você é comigo! ❤️
-  </p>
+    tempoEl.textContent = `${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+  }
+  setInterval(atualizarTempo, 1000);
+  atualizarTempo();
 
-  <br>
+  // Carrossel
+  const imagens = document.querySelectorAll(".container img");
+  let indice = 0;
 
-  <h1 class="special-title">Te amo!</h1>
+  imagens[indice].classList.add("active");
 
-  <div class="hearts-container"></div>
+  function proximaImagem() {
+    imagens[indice].classList.remove("active");
+    indice = (indice + 1) % imagens.length;
+    imagens[indice].classList.add("active");
+  }
 
-  <script>
-    function criarCoracao() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-      document.querySelector(".hearts-container").appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }
+  function imagemAnterior() {
+    imagens[indice].classList.remove("active");
+    indice = (indice - 1 + imagens.length) % imagens.length;
+    imagens[indice].classList.add("active");
+  }
 
-    setInterval(criarCoracao, 500);
+  // Intervalo automático com pausa ao passar mouse
+  let intervalo = setInterval(proximaImagem, 4000);
 
-    const inicioRelacionamento = new Date("2025-02-23T14:00:00");
-    const tempoEl = document.getElementById("tempo");
+  function pauseCarrossel() {
+    clearInterval(intervalo);
+  }
 
-    function atualizarTempo() {
-      const agora = new Date();
-      const diff = agora - inicioRelacionamento;
-      const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
-      const dias = Math.floor((diff / (1000 * 60 * 60 * 24)) % 30.44);
-      const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutos = Math.floor((diff / (1000 * 60)) % 60);
-      const segundos = Math.floor((diff / 1000) % 60);
-      tempoEl.textContent = `${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
-    }
-
-    setInterval(atualizarTempo, 1000);
-    atualizarTempo();
-
-    const imagens = document.querySelectorAll(".container img");
-    let indiceAtual = 0;
-
-    function mostrarImagemAtual() {
-      imagens.forEach(img => img.style.display = "none");
-      imagens[indiceAtual].style.display = "block";
-      imagens[indiceAtual].style.opacity = "1";
-    }
-
-    function proximaImagem() {
-      imagens[indiceAtual].style.opacity = "0";
-      indiceAtual = (indiceAtual + 1) % imagens.length;
-      mostrarImagemAtual();
-    }
-
-    function imagemAnterior() {
-      imagens[indiceAtual].style.opacity = "0";
-      indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length;
-      mostrarImagemAtual();
-    }
-
-    mostrarImagemAtual();
-    setInterval(proximaImagem, 3000);
-  </script>
+  function retomarCarrossel() {
+    intervalo = setInterval(proximaImagem, 4000);
+  }
+</script>
 </body>
 </html>
